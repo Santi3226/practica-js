@@ -1,0 +1,7 @@
+//Crear un array con 10 valores y mostrarlo en sentido inverso sin modificar el array.
+
+let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+for (i = 9; i >= 0; i--) {
+  console.log(array[i]);
+}

@@ -1,0 +1,15 @@
+//Crear una función que reciba un array y una cadena. La función debe revisar si la cadena ya se encuentra en el array y
+//si no agregarla al final y siempre debe devolver la posición del array donde se encuentra ya sea que existiera o si la agregó.
+
+let array = ['a', 'b', 'c', 'e'];
+let cadena = 'asas';
+let i;
+
+i = array.findIndex((element) => element == cadena);
+if (-1 == i) {
+  array.push(cadena);
+  i = array.length - 1;
+}
+
+console.log(array);
+console.log(i);

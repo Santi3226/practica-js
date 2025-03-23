@@ -30,4 +30,47 @@ sort: ordenar los elementos del array
 reverse: revertir el orden de los elementos del array
 */
 
+if (a > 2) {
+  console.log(`a es mayor a 2`);
+} else {
+  console.log(`a es menor a 2`);
+}
 
+/*
+Igualdad: == (doble igual)
+Igualdad estricta: === (triple igual) LOS ESTRICTOS COMPARAN VALOR + TIPO DE DATO
+Desigualdad: !=
+Desigualdad estricta: !==
+Comparadores de magnitud `>, >=,<=,<
+OR: ||
+AND: &&
+NOT: !
+*/
+
+switch (a) {
+  case 1:
+    console.log(`a is 1`);
+    break;
+  case 2:
+    console.log(`a is 2`);
+    break;
+}
+
+/*
+while (condition) {
+  // statements
+}
+
+do {
+  // statements
+} while (condition)
+ 
+for (let k = 0; k < 3; k++){
+	//statements
+}
+
+datos.forEach((element, i) => {                                                     PARA RECORRER UN ARREGLO
+  console.log(`el elemento ${i} es ${element} de tipo ${typeof element}`);
+});
+
+*/

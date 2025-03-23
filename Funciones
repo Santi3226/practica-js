@@ -1,0 +1,26 @@
+function saludar(nombre, saludo = 'Hola') {
+  return `${saludo} ${nombre}`;
+}
+
+console.log(saludar('Juan', 'Buenas'));
+console.log(saludar('Juan')); //parameters opcionales
+console.log(saludar()); //parameters no son obligatorios, se autocomleta con undefined
+console.log(saludar('Hello', 'John')); //orden importa
+console.log(saludar('John', 'Hello', '!')); //si te pasas se ignora
+
+function despedir() {
+  return console.log('Adios!');
+}
+
+despedir();
+
+const numero = function preg(nombre, num = 1) {
+  //se pueden asignar func como dato
+  return `${num} ${nombre}`;
+};
+
+console.log(numero('Santi', 5));
+console.log(numero('Mati'));
+
+//NO SON HOISTEADAS -> PUEDEN DECLARARSE EN CUALQUIER LADO
+//ORIGINALMENTE SO OBJETOS, SE PUEDEN USAR COMO DATO, PARAMETRO O RETORNO

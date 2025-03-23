@@ -1,0 +1,29 @@
+//Crear una función que reciba un array de palabras y una cadena e indique cuantas veces se encuentra la palabra en el array.
+
+let array = [
+  'arbol',
+  'bala',
+  'casa',
+  'dedo',
+  'arbol dedo casa dedo arbol arbol',
+];
+let total = 0;
+
+function contarPalabras(array, palabra) {
+  let total = 0;
+  const regex = new RegExp(`\\b${palabra}\\b`, 'g'); // Asegura que coincida con palabras completas
+
+  for (let i = 0; i < array.length; i++) {
+    const coincidencias = array[i].match(regex); // Busca coincidencias en cada elemento del array
+    if (coincidencias) {
+      total += coincidencias.length; // Suma la cantidad de coincidencias encontradas
+    }
+  }
+
+  return total;
+}
+
+const palabra = 'pedo';
+console.log(
+  `La palabra "${palabra}" aparece ${contarPalabras(array, palabra)} veces.`
+);

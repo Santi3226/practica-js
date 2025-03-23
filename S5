@@ -1,0 +1,32 @@
+/*
+Definir una cadena
+Crear 2 funciones: aprobar y reprobar
+Al invocar la función aprobar(), se debe aumentar el número de materias aprobadas y veces rendidas en 1.
+Al invocar la función reprobar sólo se debe aumentar las veces rendidas.
+*/
+
+let frase = 'Habiendo rendido 0 veces, materias aprobadas 0';
+let contA = 0;
+let contB = 0;
+
+for (let i = 0; i < 5; i++) {
+  frase = aprobar(frase, contA);
+}
+for (let i = 0; i < 5; i++) {
+  frase = reprobar(frase, contB);
+}
+
+console.log(frase);
+
+function aprobar(frase, cont) {
+  frase = frase.replaceAll(cont, cont + 1);
+  contA = contA + 1;
+  contB = contB + 1;
+  return frase;
+}
+
+function reprobar(frase, cont) {
+  frase = frase.replace(cont, cont + 1);
+  contB = contB + 1;
+  return frase;
+}
