@@ -1,0 +1,30 @@
+const person = {
+  firstName: 'Santi',
+  lastName: 'Dedich',
+  age: 21,
+  saludo() {
+    return 'Mis hobbies son ' + this.hobbies; //SE PUEDEN CREAR METODOS E INVOCARLOS CON EL OBJETO
+  },
+  hobbies: ['Gaming', 'Football', 'Coding'],
+  address: {
+    street: '123 Mountain view st',
+    city: {
+      zip: 816015,
+      name: 'Rosario',
+    },
+    state: {
+      code: 63,
+      name: 'Santa Fe',
+    },
+    country: 'Argentina',
+  },
+};
+
+console.log(
+  `${person.firstName} vive en ${person.address.city.name}, y tiene ${person.age} años.`
+);
+
+person.job = 'Developer'; //se puede agregar propiedades sobre la marcha
+console.log(person);
+
+console.log(person.saludo());
