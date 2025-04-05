@@ -1,0 +1,41 @@
+//Hacer un método que reciba un objeto (en terminos de javascript) y me imprima por consola toda la cadena de prototipos hasta llegar a null.
+
+const Person = {
+  init(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.greet = function () {
+      return `Hello, I'm ${this.firstName} ${this.lastName}`;
+    };
+  },
+};
+const Author = {
+  __proto__: Person, // can be done with Object.create as well
+  init(firstName, lastName, age, quote) {
+    Person.init.call(this, firstName, lastName, age);
+    this.quote = quote;
+    this.sayQuote = function () {
+      return `"${this.quote}". ${this.firstName} ${this.lastName}`;
+    };
+  },
+};
+const sam = Object.create(Person);
+sam.init('Sam', 'Clemens', 25);
+const mark = Object.create(Author);
+mark.init(
+  'Mark',
+  'Twain',
+  25,
+  'Never argue with stupid people, they will drag you down to their level and then beat you with experience.'
+);
+
+
+function protos(object) {
+  do {
+    object = Object.getPrototypeOf(object);
+    console.log(object);
+  } while (object);
+}
+
+protos(Person);

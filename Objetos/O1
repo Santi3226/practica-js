@@ -1,0 +1,37 @@
+//Crear una función que reciba un array con objetos representando evaluaciones
+//Y devuelva un array con el promedio de cada alumno, por ejemplo:
+
+grades = [
+  { studentId: 66666, grade: 6 },
+  { studentId: 12345, grade: 9 },
+  { studentId: 66666, grade: 8 },
+  { studentId: 12345, grade: 1 },
+  { studentId: 99999, grade: 1 },
+];
+
+grades.sort((a, b) => a.studentId - b.studentId);
+
+function promedios() {
+  let promedio;
+  let prom = [];
+  let id = grades[0].studentId;
+  let tot = 0;
+  let j = 0;
+  for (i = 0; i < grades.length; i++) {
+    if (grades[i].studentId == id) {
+      tot = tot + grades[i].grade;
+      j = j + 1;
+    } else {
+      promedio = tot / j;
+      prom.push({ id, promedio });
+      id = grades[i].studentId;
+      tot = grades[i].grade;
+      j = 1;
+    }
+  }
+  promedio = tot / j;
+  prom.push({ id, promedio });
+  return prom;
+}
+
+console.table(promedios());
