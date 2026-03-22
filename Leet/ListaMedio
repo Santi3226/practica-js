@@ -1,0 +1,23 @@
+/*Dada una linked list, devuelve el nodo del medio*/
+var medioList = function(list)
+{
+//Dejar un puntero en el principio de list
+//Recorrer list contando la cantidad de nodos
+//Dividir la cantidad al medio y volver a recorrerlo con el puntero inicial
+//Devolver el dummy.val
+let dummy = list;
+let i=0;
+while(dummy)
+{
+  dummy=dummy.next;
+  i++;
+}
+i=Math.round(i/2);
+for(j=0;j<=i;j++)
+{
+  list=list.next
+}
+return list.val;  
+}
+
+console.log(medioList([1,2,3,4,5]))

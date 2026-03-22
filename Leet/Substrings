@@ -1,0 +1,23 @@
+/** Esta mal, hay mejores implementaciones
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+  let max = 0;
+  let arr = [];
+  if (s.length == 0) {
+    return 1;
+  }
+  for (i = 0; i <= s.length; i++) {
+    if (arr.includes(s[i])) {
+      if (arr.length >= max) {
+        max = arr.length;
+      }
+      arr = [];
+      arr.push(s[i]);
+    } else {
+      arr.push(s[i]);
+    }
+  }
+  return max;
+};

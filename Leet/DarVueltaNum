@@ -1,0 +1,27 @@
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function (x) {
+  let string = '';
+  let isNeg = false;
+  if (x < 0) {
+    x = x * -1;
+    isNeg = true;
+  }
+  x = x.toString();
+  for (i = 0; i < x.length; i++) {
+    string = string + x[x.length - i - 1];
+  }
+  string = parseInt(string, 10);
+  if (isNeg) {
+    string = string * -1;
+  }
+  if ((-2) ** 31 < string && string < 2 ** 31 - 1) {
+    return string;
+  } else {
+    return 0;
+  }
+};
+
+console.log(reverse(-12345));

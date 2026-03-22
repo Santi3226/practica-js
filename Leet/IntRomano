@@ -1,0 +1,58 @@
+/**
+ * @param {number} num
+ * @return {string}
+ */
+var intToRoman = function (num) {
+  let conversion = [
+    [1000, 'M'],
+    [900, 'CM'],
+    [500, 'D'],
+    [400, 'CD'],
+    [100, 'C'],
+    [90, 'XC'],
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I'],
+  ];
+
+  let string = '';
+  if (num > 3999) return 'invalid';
+  let ns = num.toString();
+
+  for (i = 0; i < ns.length; i++) {
+    let dig = parseInt(ns[i], 10);
+    if (dig == 0) {
+      //0-7
+    } else if (dig <= 3) {
+      for (j = 1; j <= dig; j++) {
+        string += conversion[0][6 - ns.length * i];
+      }
+    } else if (dig == 4) {
+      string += 'iv xl cd'; //conversion[1][2] + conversion[1][3];
+    } else if (dig >= 5 && dig <= 8) {
+      string += 'v..viii'; //conversion[1][2] + conversion[1][3];
+    } else if (dig == 9) {
+      string += 'ix xc cm'; //conversion[1][1] + conversion[1][3];
+    }
+  }
+  return string;
+  /*
+  let res = '';
+
+  for (let [value, symbol] of map) {
+    while (num >= value) {
+      res += symbol;
+      num -= value;
+    }
+  }
+
+  return res;
+};
+  */
+};
+
+console.log(intToRoman(52));

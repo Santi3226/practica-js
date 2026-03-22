@@ -1,0 +1,15 @@
+var twoSum = function (nums, target) {
+  for (i = 0; i <= nums.length; i++) {
+    for (j = i + 1; j <= nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+  return {};
+};
+
+/*Dado un array de enteros `nums` y un entero `target`, devuelve los índices de ambos números de forma que su 
+suma sea igual a `target`.
+Puedes asumir que cada entrada tiene una única solución y que no puedes usar el mismo elemento dos veces.
+Puedes devolver la respuesta en cualquier orden.*/

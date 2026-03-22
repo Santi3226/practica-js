@@ -1,0 +1,27 @@
+/**
+ * @param {string} s
+ * @param {number} numRows
+ * @return {string}
+ */
+var convert = function (s, numRows) {
+  //reevisar indices
+  let subs = Array.from({ length: numRows }, () => ''); //let subs = [];
+  let count = 0;
+  let ans = '';
+  while (count < s.length) {
+    // bajada
+    for (let i = 0; i < numRows && count < s.length; i++) {
+      subs[i] += s[count++];
+    }
+
+    // diagonal subida
+    for (let i = numRows - 2; i > 0 && count < s.length; i--) {
+      subs[i] += s[count++];
+    }
+  }
+  for (l = 0; l < numRows; l++) {
+    ans = ans + subs[l];
+  }
+  return(ans);
+};
+
