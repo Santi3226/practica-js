@@ -1,11 +1,14 @@
 ### Obtener todos los personajes
 GET http://localhost:3000/api/characters
+
 ### Obtener un personaje por ID
-GET http://localhost:3000/api/characters/2860e5b1-92cf-4efb-92a5-23dec9b0ffb9
+GET http://localhost:3000/api/characters/85d643b6-6273-4d56-acfb-b38ad4246f07
+### Borrar por ID
+DELETE http://localhost:3000/api/characters/1330f722-07df-4a72-bd89-dadf8179d2ce
 
 ### Crear un nuevo personaje
 //Tener cuidado con la extra linea desp de content-type
-POST http://localhost:3000/api/characters
+POST http://localhost:3000/api/characters   
 Content-Type: application/json 
 
 {
@@ -19,8 +22,19 @@ Content-Type: application/json
   "id": "randomUUID()"
 }
 
-### Actua un personaje por ID
-PUT http://localhost:3000/api/characters/b65066a2-b3ee-4fe4-9d08-694802a7c3b2
+### Actua un personaje por ID solo algunos atb
+PATCH http://localhost:3000/api/characters/883101a6-e353-4c6a-9558-1470d619da7b
+Content-Type: application/json
+
+{
+  "level": 3,
+  "hp": 150,
+  "mana": 150,
+  "attack": 150
+}
+
+### Actua un personaje por ID al 100%
+PUT http://localhost:3000/api/characters/3d41f377-b33e-46-9906-9f82ce9d5d9c
 Content-Type: application/json
 
 {
@@ -32,3 +46,4 @@ Content-Type: application/json
   "attack": 150,
   "items": ["Super Sword", "Ganon's Shield"]
 }
+
