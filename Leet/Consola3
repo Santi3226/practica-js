@@ -1,0 +1,34 @@
+/*
+Una tienda tiene registros de compras en este formato:
+cliente, monto
+
+Ejemplo: Juan,1200 Ana,800 Juan,300 Pedro,1500 Ana,700
+
+Tenés que:
+1. Calcular el total gastado por cada cliente
+2. Aplicar descuentos según reglas:
+Si el total > 2000 → 20% descuento
+Si el total > 1000 → 10% descuento
+Si no → sin descuento
+*/
+
+let compras= {};
+let pendientes=[["Juan",1200], ["Ana",800], ["Juan",300], ["Pedro",1500], ["Ana",700]];
+
+for(i=0;i<pendientes.length;i++)
+  {
+    let nombre = pendientes[i][0];
+    let valor = pendientes[i][1];
+    if(!compras[nombre])
+    {
+      compras[nombre]={ valor: 0, dto:0, total:0}; 
+    }
+    compras[nombre].valor+=valor;
+  }
+for(c in compras)
+{
+  if(compras[c].valor>2000){compras[c].dto=0.2;}
+  else if(compras[c].valor>1000){compras[c].dto=0.1}
+  compras[c].total=(1-compras[c].dto)*compras[c].valor
+}
+console.log(compras);

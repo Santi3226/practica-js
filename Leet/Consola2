@@ -1,0 +1,15 @@
+var parentesis = function(str){
+let arr=[];
+if(str.length%2==1)return false;
+for(i=0;i<str.length;i++)
+  {
+    if(str[i]=="("){arr.push(")");}
+    else if(str[i]=="{"){arr.push("}");}
+    else if(str[i]=="["){arr.push("]");}
+    else if(str[i]!=arr.pop()) {return false};
+    } 
+  if(arr.length==0) return true;
+  return false;
+  }
+
+console.log(parentesis("(}"));

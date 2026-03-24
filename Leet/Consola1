@@ -1,0 +1,78 @@
+/*
+Una tienda registra sus ventas del día en el siguiente formato:
+producto,cantidad,precio_unitario
+Ejemplo de input:
+manzana,2,100
+banana,1,80
+manzana,3,100
+pera,2,120
+banana,2,80
+*/
+
+let arr=[["manzana",2,100],
+["banana",1,80],
+["manzana",3,100],
+["pera",2,120],
+["banana",2,80],];
+
+let tot=0;
+let max;
+let totm=0;
+let totb=0;
+let totp=0;
+let cantm=0;
+let cantb=0;
+let cantp=0;
+
+for(let i=0;i<arr.length;i++)
+{ 
+  if(arr[i][0]=="manzana") {totm+=arr[i][2]*arr[i][1]; cantm=cantm+arr[i][1];}
+  else if (arr[i][0]=="banana") {totb+=arr[i][2]*arr[i][1]; cantb=cantb+arr[i][1];}
+  else if (arr[i][0]=="pera") {totp+=arr[i][2]*arr[i][1]; cantp=cantp+arr[i][1]; }
+  tot=tot+arr[i][2]*arr[i][1];
+}
+console.log(cantb,cantm,cantp);
+if(Math.max(cantb,cantm,cantp)==cantb)max="Banana";
+else if(Math.max(cantb,cantm,cantp)==cantm)max="Manzana";
+else if(Math.max(cantb,cantm,cantp)==cantp)max="Pera";
+
+console.log("Total vendido: ", tot, "--", "Manzanas vendido: ", totm, "Bananas vendido: ", totb,
+ "Peras vendido: ", totp, "Mayor cantidad", max
+ );
+
+ 
+let productos = {};
+let totalGeneral = 0;
+for (let i = 0; i < arr.length; i++) {
+  let nombre = arr[i][0];
+  let cantidad = arr[i][1];
+  let precio = arr[i][2];
+
+  if (!productos[nombre]) {
+    productos[nombre] = { cantidad: 0, total: 0 };
+  }
+
+  productos[nombre].cantidad += cantidad;
+  productos[nombre].total += cantidad * precio;
+
+  totalGeneral += cantidad * precio;
+}
+
+// producto más vendido
+let maxProducto = "";
+let maxCantidad = 0;
+
+for (let nombre in productos) {
+  if (productos[nombre].cantidad > maxCantidad) {
+    maxCantidad = productos[nombre].cantidad;
+    maxProducto = nombre;
+  }
+}
+
+// output
+for (let nombre in productos) {
+  console.log(nombre + ": " + productos[nombre].total);
+}
+
+console.log("\nProducto más vendido:", maxProducto);
+console.log("Total general:", totalGeneral);

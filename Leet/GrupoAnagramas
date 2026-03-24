@@ -1,0 +1,31 @@
+/**
+ * Given an array of strings strs, group the together. You can return the answer in any order.
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function(strs) {
+  let ans=[[]];
+  let i=0;
+  while(strs)
+  {
+    for(j= i+1;j<strs.length;j++)
+    {
+    
+      if(strs[i].length==strs[j].length)
+      { 
+      
+        let i=0;
+        while(i<s.length)
+          {
+            t =t.replace(s[i],"");
+            i++;
+          }
+        if(t=="")return true;
+        else return false;
+      }
+      else {return false;}
+    
+    }
+  }
+  
+};

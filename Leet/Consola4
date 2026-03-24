@@ -1,0 +1,62 @@
+/*
+Te dan un array de frases, por ejemplo:
+let frases = [
+  "manzana banana manzana",
+  "pera manzana banana",
+  "banana pera pera"
+];
+Objetivo
+Contar cuántas veces aparece cada palabra en todas las frases.
+Mostrar un ranking de palabras de mayor a menor frecuencia.
+Imprimir el resultado final así:
+banana: 4
+manzana: 3
+pera: 3
+⚠️ Condiciones
+Todo en JavaScript en consola
+No usar librerías externas
+Ignorar mayúsculas/minúsculas (todo en minúscula)
+Separar lógica en pasos claros: contar → ordenar → mostrar
+*/
+
+let frases = [
+  "manzana banana manzana",
+  "pera manzana banana manzana manzana",
+  "banana pera pera pera"
+];
+
+let arr=[];
+for(let i=0;i<frases.length;i++)
+{
+  frases[i] = frases[i].toLowerCase();
+  arr=arr.concat(frases[i].split(" "));
+}
+
+let frutas = {}
+for(let j=0; j<arr.length;j++)
+{
+  if(!frutas[arr[j]])
+  {
+    frutas[arr[j]] = {cantidad:0}
+  }
+  frutas[arr[j]].cantidad++
+}
+
+let aux;
+for(f in frutas)
+{
+  for(g in frutas)
+  {
+    if(frutas[f].cantidad>frutas[g].cantidad)
+    {
+      aux=frutas[f];
+      frutas[f]=frutas[g];
+      frutas[g]=aux;
+    }
+  }
+}
+//Transformar obj en array
+let ranking = Object.entries(frutas).sort((a, b) => a[1].cantidad - a[1].cantidad);
+ranking.forEach(r => {
+  console.log(r[0], r[1].cantidad);
+});
