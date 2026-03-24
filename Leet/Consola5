@@ -1,0 +1,83 @@
+/*
+Escribí un programa de consola que simule la caja de un kiosco. El programa debe leer productos y cantidades, 
+calcular el total y mostrar un resumen de la compra.
+
+El usuario ingresa líneas con el formato nombre,precio,cantidad hasta escribir fin. Al terminar, el programa 
+debe mostrar un ticket con cada ítem, el subtotal de cada uno, y el total final.
+Ejemplo de ejecución
+Ingresá un producto (o "fin" para terminar):
+> coca,500,2
+> alfajor,300,3
+> agua,200,1
+> fin
+---- TICKET ----
+coca         x2   $1000
+alfajor      x3   $900
+agua         x1   $200
+----------------
+TOTAL:       $2100
+Casos borde a tener en cuenta
+¿Qué pasa si el usuario no ingresa ningún producto? ¿Y si el precio o la cantidad no son números válidos?
+*/
+
+import { createInterface } from "node:readline";
+
+const rl = createInterface({
+  input : process.stdin,
+  output : process.stdout
+});
+
+
+let lineas = {};
+var pedirNombre = function(){
+rl.question("Insertar nombre: ", (nombre)=>
+{
+  if(nombre=="fin") 
+  {
+    fin();
+    return;
+  }
+  if(nombre==undefined || nombre=="")
+  {
+    console.log("Insertar nombre valido")
+    pedirNombre();
+  }
+  if(!lineas[nombre])
+  {
+    lineas[nombre]={
+      cantidad:0,
+      precio:0 }
+  rl.question("Insertar precio: ", (precio)=>
+  {        
+    lineas[nombre].precio=parseInt(precio,10);
+    rl.question("Insertar cantidad: ", (cant)=>
+  {        
+    lineas[nombre].cantidad+=parseInt(cant,10);
+    pedirNombre();  
+  });
+  });
+  };
+  rl.question("Insertar cantidad: ", (cant)=>
+  {        
+    lineas[nombre].cantidad+=parseInt(cant,10);
+    pedirNombre();  
+  });
+});
+};
+pedirNombre();
+
+var fin = function()
+{
+  rl.close(); 
+  let array = Object.entries(lineas);
+  console.log("---- TICKET ----")
+  let tot=0;
+  for(let l in lineas)
+  {
+    console.log(l, " ",lineas[l].cantidad, " ", lineas[l].precio);
+    tot+=lineas[l].precio*lineas[l].cantidad;
+  }
+  console.log("----------------");
+  console.log("Total: ", tot);
+  return;
+}

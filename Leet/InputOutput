@@ -1,0 +1,25 @@
+import { createInterface } from 'readline';
+/*
+const rl = createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('What is your name? ', (name) => {
+  console.log(`Hello, ${name}!`);
+  rl.close(); // Important to close the interface when done
+});
+*/
+async function askQuestions() {
+  const rl = createInterface({ input: process.stdin, output:process.stdout });
+
+  const name = rl.question("What is your name? ");
+  const age = rl.question("How old are you? ");
+  const color = rl.question("What is your favorite color? ");
+
+  console.log(`\nHello, ${name}! You are ${age} years old and your favorite color is ${color}.`);
+  
+  rl.close();
+}
+
+askQuestions();

@@ -56,7 +56,9 @@ for(f in frutas)
   }
 }
 //Transformar obj en array
+console.log(frutas);
 let ranking = Object.entries(frutas).sort((a, b) => a[1].cantidad - a[1].cantidad);
+console.log(ranking);
 ranking.forEach(r => {
   console.log(r[0], r[1].cantidad);
 });
